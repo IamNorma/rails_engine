@@ -1,5 +1,5 @@
 class Merchant < ApplicationRecord
-  validates :name
+  validate :name
 
   has_many :items, dependent: :destroy
   has_many :invoices, dependent: :destroy
