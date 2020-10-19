@@ -10,7 +10,7 @@ describe "Merchants API" do
 
     expect(merchants.count).to eq(5)
 
-    merchants.each do |item|
+    merchants.each do |merchant|
       expect(merchant).to have_key(:id)
       expect(merchant[:id]).to be_an(Integer)
 
