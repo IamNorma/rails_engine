@@ -9,9 +9,25 @@ RSpec.describe "Merchant API" do
 
     post "/api/v1/merchants", headers: headers, params: JSON.generate(merchant: merchant_params)
 
-    created_merchant = Merchant.last
+    merchant = JSON.parse(response.body, symbolize_names: true)
+
+    last_merchant = Merchant.last
 
     expect(response).to be_successful
-    expect(created_merchant.name).to eq(merchant_params[:name])
+    expect(last_merchant.name).to eq(merchant_params[:name])
+
+    expect(merchant[:data]).to be_a(Hash)
+
+    expect(merchant[:data]).to have_key(:id)
+    expect(merchant[:data][:id]).to be_a(String)
+
+    expect(merchant[:data]).to have_key(:type)
+    expect(merchant[:data][:type]).to be_a(String)
+
+    expect(merchant[:data]).to have_key(:attributes)
+    expect(merchant[:data][:attributes]).to be_a(Hash)
+
+    expect(merchant[:data][:attributes]).to have_key(:name)
+    expect(merchant[:data][:attributes][:name]).to be_a(String)
   end
 end
