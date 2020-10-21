@@ -11,6 +11,11 @@ class Api::V1::MerchantsController < ApplicationController
     render json: MerchantSerializer.new(Merchant.create!(merchant_params))
   end
 
+  def update
+    merchant = Merchant.update(params[:id], merchant_params)
+    render json: MerchantSerializer.new(merchant)
+  end
+
   def destroy
     render json: Merchant.delete(params[:id])
     head :no_content
