@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Merchants API" do
+describe "Merchants Items" do
   it 'sends a list of items associated with a merchant' do
     merchant1 = create(:merchant, id: 1)
     merchant2 = create(:merchant, id: 2)
