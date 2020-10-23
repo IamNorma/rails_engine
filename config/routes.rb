@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       namespace :items do
         get '/:id/merchants', to: 'merchants#show'
       end
+      resources :revenue, only: [:index]
       resources :items, only: [:index]
       resources :merchants
     end
