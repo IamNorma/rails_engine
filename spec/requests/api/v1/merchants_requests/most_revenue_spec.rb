@@ -4,9 +4,9 @@ describe "Merchants API" do
   it 'can get merchants with most revenue' do
     customer = create(:customer)
 
-    merchant1 = create(:merchant)
-    merchant2 = create(:merchant)
-    merchant3 = create(:merchant)
+    merchant1 = create(:merchant, name: "Apple")
+    merchant2 = create(:merchant, name: "Target")
+    merchant3 = create(:merchant, name: "Vallarta's")
 
     item1 = create(:item, merchant: merchant1)
     item2 = create(:item, merchant: merchant1)
@@ -42,7 +42,7 @@ describe "Merchants API" do
     expect(response).to be_successful
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data].count).to eq(3)
+    expect(json[:data].count).to eq(2)
 
     json[:data].each do |merchant|
       expect(merchant).to have_key(:id)
