@@ -45,7 +45,7 @@ describe "Items Search API" do
 
     expect(json[:data].count).to eq(2)
 
-    items[:data].each do |item|
+    json[:data].each do |item|
       expect(item).to have_key(:id)
       expect(item[:id]).to be_a(String)
       expect(item).to have_key(:attributes)
@@ -65,5 +65,5 @@ describe "Items Search API" do
       expect(item[:relationships][:merchant]).to have_key(:data)
       expect(item[:relationships][:merchant][:data]).to be_a(Hash)
     end
-  end 
+  end
 end
