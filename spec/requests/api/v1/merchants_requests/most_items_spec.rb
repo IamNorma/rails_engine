@@ -43,8 +43,8 @@ describe "Merchants API" do
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(json[:data].count).to eq(2)
-    expect(json[:data][0][:attributes][:name]).to eq("Target")
-    expect(json[:data][1][:attributes][:name]).to eq("Vallata's")
+    expect(json[:data][0][:attributes][:name]).to eq("Vallarta's")
+    expect(json[:data][1][:attributes][:name]).to eq("Target")
 
     json[:data].each do |merchant|
       expect(merchant).to have_key(:id)
