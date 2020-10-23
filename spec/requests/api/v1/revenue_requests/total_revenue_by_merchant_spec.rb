@@ -42,6 +42,6 @@ describe "Revenue API" do
     expect(response).to be_successful
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data][:attributes][:revenue].to_f.round(2)).to eq(16.00)
+    expect(json[:data][:attributes][:revenue].to_f.round(2)).to eq(34.00)
   end
 end

@@ -14,6 +14,14 @@ class Revenue
     Revenue.new(total)
   end
 
+  def self.total_revenue_by_merchant(merchant_id)
+    total = Merchant.joins(invoices: [:invoice_items, :transactions])
+      .where('merchants.id=merchant_id')
+      .where("invoices.status='shipped' AND transactions.result='success'")
+      .sum('invoice_items.unit_price * invoice_items.quantity')
+    Revenue.new(total)
+  end
+
   private
 
   def self.start(start_date)
